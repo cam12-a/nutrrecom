@@ -1,0 +1,159 @@
+
+  @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+  $black: #212529;
+  $white: #ffffff;
+  
+  $col1: #9f1414;
+  $col2: #dc3545;
+  
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  @mixin flex($fd: row, $jc: center, $ai: center) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+  }
+  
+  ul {
+    list-style-type: none;
+  
+    li {
+      position: relative;
+      margin: 0.25em;
+      text-align: center;
+  
+      a {
+        display: block;
+        padding: 0.55em 1em;
+        text-decoration: none;
+        color: darken($white, 15%);
+        border-radius: 0.35em;
+        background-color: rgba($black, 0.25);
+        transition: all 200ms ease;
+  
+        &:hover {
+          color: $white;
+          background-color: rgba($black, 0.65);
+        }
+  
+        &.active {
+          background-color: rgba($black, 0.45);
+        }
+      }
+  
+      ul {
+        li {
+          a {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  
+    &#Header {
+      @include flex($ai: flex-start);
+    }
+  }
+  
+  .dropdown {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%) rotatex(90deg) scale(0);
+    margin-top: 0.55em;
+    transform-origin: 0 0;
+    border-radius: 0.35em;
+    background-color: rgba($black, 0.15);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms linear;
+  
+    &.isOpen {
+      transform: translatex(-50%);
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*body {
+    position: relative;
+    overflow: hidden;
+    padding-top: 0em;
+    padding-bottom: 4em;
+    min-height: 100vh;
+    font: {
+      family: "Raleway", sans-serif;
+      size: 16px;
+      weight: 500;
+    }
+    line-height: 1.5;
+    @include flex($ai: flex-start);
+    color: currentcolor;
+    background: radial-gradient($col2 6%, transparent 6%), darken($col1, 2%);
+    background-position: 0 0, 5px 5px;
+    background-size: 5px 5px;
+    
+    &::before {
+      position: absolute;
+      content: '😍';
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $white;
+      opacity: .1;
+      font-size: 30vw;
+      animation: emoji 20s linear 3s infinite;
+    }
+  }
+  
+  @keyframes emoji {
+    1% {
+      content: '😍';
+    }
+    2% {
+      content: '😙';
+    }
+    3% {
+      content: '😌';
+    }
+    4% {
+      content: '😋';
+    }
+    5% {
+      content: '😉';
+    }
+    6% {
+      content: '😁';
+    }
+    7% {
+      content: '😜';
+    }
+    8% {
+      content: '😍';
+    }
+    9% {
+      content: '😝';
+    }
+    10% {
+      content: '😊';
+    }
+    11%,
+    100% {
+      content: '';
+    }
+  }*/
