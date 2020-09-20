@@ -1,17 +1,28 @@
 <template>
+
   
   <!--<Welcome msg=""/> -->
-  <Header />
+  <Header/>
+  <Body />
+  <Vue/>
+  <VueCarousel/>
+  <Footer/>
+  
 </template>
 
 <script>
 //import Welcome from './components/Welcome.vue'
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Body from './components/Body.vue'
+import Vue from 'vue'
+import VueCarousel from 'vue-carousel'
+
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,Footer,Body,VueCarousel,Vue
   }
 }
 </script>
@@ -24,8 +35,8 @@ export default {
   color: #2c3e50;
 }
 
-@import "../src/assets/css/style.css";
-@import "../src/assets/css/style.scss";
+
+@import "../src/assets/css/nutrStyle.css";
 
 
 

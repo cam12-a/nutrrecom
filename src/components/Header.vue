@@ -2,54 +2,55 @@
 <template>
     <div class="Header">
         <nav class="banner">
-       <!-- <ul class="ulbanner">
-            <li><img src="" alt="logo" class="logo" v-bind:title="'Логотип приложения'"></li>
-            <li class="main">Главная</li>
-            <li class="menu">Создать меню</li>
-            <li class="aboutUS">О нас</li>
-            <li class="myAccount">Личный кабинет</li>
-        </ul> -->
         <div class="textonRightOfLogo">
             <a href="#"><img src="../assets/logoNutr.png" alt="error" style="width:100px;height:70px"></a>
         </div>
-       
-        
-        <ul>
-            <input type="search" name="search" id="search">
-            <li v-for="item in navList" v-bind:key="item" >
-                <template v-if="item.children"  >
-                    <a :href="item.url" :title="item.name" class="menu"  :class="{active}" @mouseover="isOpen=!isOpen ,active=!active">
-                        {{item.name}}<svg viewBox="0 0 451.847 451.847" width="12"><path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
-        c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
-        c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z" fill="#fff"/></svg>
-                    </a>
-                    <div :class="{isOpen}" class="dropdown">
-                        <ul>
-                            <li v-for="{url,name,index} in item.children" :key='index'>
-                                <a :href="url" :title="name">{{name}}</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </template>
-                <template v-else>
-                    <a :href="item.url" :title="item.name">{{item.name}}</a>
+    
+    <ul class="menu">
+          <input type="search" name="search" id="search">
+    <li v-for="item in navList" v-bind:key="item" >
+        <template v-if="item.name!='Создать меню'">
+            <li>
+                <a :href="item.url" :title="item.name">{{item.name}}</a>
+            </li>
+        </template>
+        <template v-else>
+            <li @mouseover="listOne = true" @mouseleave="listOne = false" >
+                <a :href="item.url" :title="item.name" @mouseover="listOne = true" @mouseleave="listOne = false">{{item.name}}</a>
+                    <template v-if="item.children" >
+                        <transition name="fade">
+                            <ul v-if="listOne" @click="listOne = false" class="mydropDown">
+                                <li v-for="{url,name,index} in item.children" :key='index'>
+                                    <a :href="url" :title="name" >{{name}}</a>
+                                </li>
+                            </ul>
+                        </transition>
                 </template>
             </li>
-          
-        </ul>
-        </nav>
+        </template>
+        
+    </li>
+    
+  </ul>
+    </nav>
         
     </div>
+
+
+   
+    
 </template>
 <script>
 export default {
     name: 'Header',
     props:["item"],
-    data(){
+    data() {
+    
         return {
             isOpen:false,
             active:false,
+            listOne:   false,
+           
             navList:[
                 {url:"#",name:"Главная"},
                 {url:"#",name:"Создать меню",children:[
@@ -84,14 +85,19 @@ export default {
 nav
 {
     background-color: white;
+    padding: 12px;
+    height: 10px;
     
 }
 nav ul li {
     display: inline-table;
     margin-left: 10px;
+    width: 80px;
 }
 .Header > nav > ul >li >a:hover {
  color: black;
+ text-decoration:underline black;
+ 
 }
 .logo{
     margin-left: 500px;
@@ -110,7 +116,7 @@ nav ul li.logo a{
     position: absolute;
 }
 nav ul {
-    margin-left: 25em;
+    margin-left: 10em;
     margin-top: 12px;
    
 }
@@ -124,5 +130,7 @@ nav ul {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 10px;
+  margin-left: 22em;
 }
+
 </style>

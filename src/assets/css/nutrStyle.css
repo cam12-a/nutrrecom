@@ -1,0 +1,55 @@
+.menu {  
+    font: 14px/1.5 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu a {
+    display: block;
+    color: black;
+    text-decoration: black;
+    background: white;
+    
+  }
+  .menu a:hover
+  {
+    text-decoration: underline;
+
+  }
+  
+  .menu li {
+    display:block;
+    float: left;
+    position: relative;
+    background:currentColor;
+    color: #fff;
+    min-width: 140px;
+    text-decoration: underline;
+
+  }
+  
+  .menu li ul {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li ul li {
+    background: #444;
+    transition: background .2s;
+    
+  }
+  
+
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .2s;
+    color: cyan;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+  }
